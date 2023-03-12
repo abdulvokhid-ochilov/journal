@@ -1,9 +1,17 @@
-import React from "react";
 import { HiOutlineLogout } from "react-icons/hi";
 import { Button, Dropdown, Logo, SearchInput } from "../../atoms";
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export const Navbar = () => {
+	const [page, setPage] = useState();
+
+	useEffect(() => {
+		setPage(window.location.pathname);
+	}, [window.location.pathname]);
+
+	if (page === "/login") return <></>;
+
 	return (
 		<div className="bg-white p-5 ml-[2px] flex flex-row justify-between items-center rounded-3xl">
 			<Logo />

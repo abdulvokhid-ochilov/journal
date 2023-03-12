@@ -8,7 +8,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 
 export const Sidebar = () => {
 	return (
-		<div className="bg-white p-10 rounded-2xl flex flex-col gap-10">
+		<div className="w-fit bg-white p-10 rounded-2xl flex flex-col gap-10">
 			<NavLink to="/">
 				{({ isActive, isPending }) => (
 					<span

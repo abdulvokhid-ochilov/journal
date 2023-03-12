@@ -6,6 +6,8 @@ import { ArticlesPage } from "./articles";
 import { ConferencesPage } from "./conferences";
 import { SeminarsPage } from "./seminars";
 import { SettingsPage } from "./settings";
+import { JournalCreatePage } from "./journal-create";
+import { LoginPage } from "./login";
 
 export const Routing = () => {
 	return (
@@ -18,6 +20,9 @@ export const Routing = () => {
 				<Route path="/journals" element={<JournalsPage />} />
 			</Routes>
 			<Routes>
+				<Route path="/journals/create" element={<JournalCreatePage />} />
+			</Routes>
+			<Routes>
 				<Route path="/articles" element={<ArticlesPage />} />
 			</Routes>
 			<Routes>
@@ -28,6 +33,9 @@ export const Routing = () => {
 			</Routes>
 			<Routes>
 				<Route path="/settings" element={<SettingsPage />} />
+			</Routes>
+			<Routes>
+				<Route path="/login" element={<LoginPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
