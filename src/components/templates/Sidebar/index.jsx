@@ -5,8 +5,14 @@ import { HiOutlineBookOpen, HiOutlineLogout } from "react-icons/hi";
 import { RiBook2Line } from "react-icons/ri";
 import { TbArticle } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { journalActions } from "../../../store/journal-slice";
 
 export const Sidebar = () => {
+	const dispatch = useDispatch();
+	const logoutHandler = () => {
+		dispatch(journalActions.logoutUser());
+	};
 	return (
 		<div className="w-fit bg-white p-10 rounded-2xl flex flex-col gap-10">
 			<NavLink to="/">
@@ -81,7 +87,10 @@ export const Sidebar = () => {
 					</span>
 				)}
 			</NavLink>
-			<div className="flex flex-row items-center gap-1 border-t py-4 my-16 cursor-pointer">
+			<div
+				onClick={logoutHandler}
+				className="flex flex-row items-center gap-1 border-t py-4 my-16 cursor-pointer"
+			>
 				<HiOutlineLogout size={20} />
 				Выйти
 			</div>

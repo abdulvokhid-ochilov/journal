@@ -8,31 +8,81 @@ import { SeminarsPage } from "./seminars";
 import { SettingsPage } from "./settings";
 import { JournalCreatePage } from "./journal-create";
 import { LoginPage } from "./login";
+import Protected from "../utils/protected";
 
 export const Routing = () => {
 	return (
 		<BrowserRouter>
 			<Navbar />
 			<Routes>
-				<Route path="/" element={<AnalyticsPage />} />
+				<Route
+					path="/"
+					element={
+						<Protected>
+							<AnalyticsPage />
+						</Protected>
+					}
+				/>
 			</Routes>
 			<Routes>
-				<Route path="/journals" element={<JournalsPage />} />
+				<Route
+					path="/journals"
+					element={
+						<Protected>
+							<JournalsPage />
+						</Protected>
+					}
+				/>
 			</Routes>
 			<Routes>
-				<Route path="/journals/create" element={<JournalCreatePage />} />
+				<Route
+					path="/journals/create"
+					element={
+						<Protected>
+							<JournalCreatePage />
+						</Protected>
+					}
+				/>
 			</Routes>
 			<Routes>
-				<Route path="/articles" element={<ArticlesPage />} />
+				<Route
+					path="/articles"
+					element={
+						<Protected>
+							<ArticlesPage />
+						</Protected>
+					}
+				/>
 			</Routes>
 			<Routes>
-				<Route path="/conferences" element={<ConferencesPage />} />
+				<Route
+					path="/conferences"
+					element={
+						<Protected>
+							<ConferencesPage />
+						</Protected>
+					}
+				/>
 			</Routes>
 			<Routes>
-				<Route path="/seminars" element={<SeminarsPage />} />
+				<Route
+					path="/seminars"
+					element={
+						<Protected>
+							<SeminarsPage />
+						</Protected>
+					}
+				/>
 			</Routes>
 			<Routes>
-				<Route path="/settings" element={<SettingsPage />} />
+				<Route
+					path="/settings"
+					element={
+						<Protected>
+							<SettingsPage />
+						</Protected>
+					}
+				/>
 			</Routes>
 			<Routes>
 				<Route path="/login" element={<LoginPage />} />

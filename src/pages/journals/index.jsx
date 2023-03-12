@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Sidebar } from "../../components/templates";
 import { Button, SearchInput } from "../../components/atoms";
 import { FiPlus } from "react-icons/fi";
 import { JournalCard } from "../../components/molecules";
 import { Link } from "react-router-dom";
+import { fetchJournals } from "../../store/journal-actions";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const JournalsPage = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const token = useSelector((state) => state.journal.token);
+
+	useEffect(() => {
+		dispatch(fetchJournals(token, navigate));
+	}, []);
+
 	return (
 		<div className="flex flex-row gap-6 mt-10 items-start">
 			<Sidebar />

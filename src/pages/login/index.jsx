@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Button, Logo } from "../../components/atoms";
 import { HiOutlineLogin } from "react-icons/hi";
+import { loginUser } from "../../store/journal-actions";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
-	const formHandler = (e) => {
+	const email = useRef();
+	const password = useRef();
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const loginHandler = (e) => {
 		e.preventDefault();
+
+		dispatch(
+			loginUser(
+				{
+					email: email.current.value,
+					password: password.current.value,
+				},
+				navigate
+			)
+		);
 	};
 	return (
 		<div className="absolute bg-[#000000A3] top-0 left-0 flex flex-row w-full h-full ">
@@ -14,7 +32,7 @@ export const LoginPage = () => {
 				<p className="#353437">
 					Пожалуйста, введите свои регистрационные данные ниже
 				</p>
-				<form onSubmit={formHandler} className="flex flex-col gap-5 mt-10">
+				<form onSubmit={loginHandler} className="flex flex-col gap-5 mt-10">
 					<div className="p-3 bg-[#F6F8F9] rounded-lg flex flex-col">
 						<label
 							htmlFor="email"
@@ -23,6 +41,7 @@ export const LoginPage = () => {
 							Email address
 						</label>
 						<input
+							ref={email}
 							type="email"
 							id="email"
 							className="bg-[#F6F8F9] focus:outline-none"
@@ -38,6 +57,7 @@ export const LoginPage = () => {
 							Password
 						</label>
 						<input
+							ref={password}
 							type="password"
 							id="password"
 							className="bg-[#F6F8F9] focus:outline-none"
